@@ -67,9 +67,9 @@ namespace Database.Model
             Decimal totalTax = 0;
             foreach (var orderItem in OrderItems)
             {
-                if (orderItem.Taxable)
+                if (orderItem.CatalogItem.Taxable)
                 {
-                    totalTax += orderItem.GetPrice() * orderItem.TaxRate;
+                    totalTax += orderItem.GetPrice() * orderItem.CatalogItem.TaxRate;
                 }
             }
             return totalTax;

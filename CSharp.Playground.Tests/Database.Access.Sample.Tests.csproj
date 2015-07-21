@@ -50,8 +50,16 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Test.cs" />
+    <Compile Include="Model\OrderItemTest.cs" />
+    <Compile Include="Model\OrderTest.cs" />
+    <Compile Include="Model\TestFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CSharp.Playground\Database.Access.Sample.csproj">
+      <Project>{481825b3-7600-4340-a24b-140de94f3f9b}</Project>
+      <Name>Database.Access.Sample</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

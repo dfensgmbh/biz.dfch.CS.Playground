@@ -27,6 +27,8 @@ namespace Database.Model
         public String Name { get; set; }
         public String Description { get; set; }
         [Required]
+        public String Version { get; set; }
+        [Required]
         public String CreatedBy { get; set; }
         [Required]
         public DateTimeOffset CreatedAt { get; set; }
@@ -39,6 +41,8 @@ namespace Database.Model
 
         // DFCHECK check, if price could be simple or if it is a price per unit or even more complex
         public Decimal Price { get; set; }
+        public Boolean Taxable { get; set; }
+        public Decimal TaxRate { get; set; }
 
         [Required]
         public String ToscaDefinition { get; set; }

@@ -33,8 +33,6 @@ namespace Database.Model
 
         [Required]
         public Int32 Quantity { get; set; }
-        public Boolean Taxable { get; set; }
-        public Decimal TaxRate;
 
         public virtual CatalogItem CatalogItem { get; set; }
 
