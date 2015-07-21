@@ -22,10 +22,25 @@ namespace Database.Model
     {
         [Key]
         public Int32 Id { get; set; }
+        // DFCHECK CreatedBy and CreatedAt for OrderItem needed?
+        [Required]
         public String CreatedBy { get; set; }
+        [Required]
         public DateTimeOffset CreatedAt { get; set; }
-        public String ModifiedBy { get; set; }
-        public DateTimeOffset ModifiedAt { get; set; }
+        public String LastModifiedBy { get; set; }
+        public DateTimeOffset LastModifiedAt { get; set; }
         public String Status { get; set; }
+
+        [Required]
+        public Int32 Quantity { get; set; }
+        public Boolean Taxable { get; set; }
+        public Decimal TaxRate;
+
+        public virtual CatalogItem CatalogItem { get; set; }
+
+        public Decimal GetPrice()
+        {
+            return CatalogItem.Price * Quantity;
+        }
     }
 }

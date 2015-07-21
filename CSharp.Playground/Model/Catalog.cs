@@ -25,10 +25,13 @@ namespace Database.Model
         public Int32 Id { get; set; }
         [Required]
         public String Name { get; set; }
+        public String Description { get; set; }
+        [Required]
         public String CreatedBy { get; set; }
+        [Required]
         public DateTimeOffset CreatedAt { get; set; }
-        public String ModifiedBy { get; set; }
-        public DateTimeOffset ModifiedAt { get; set; }
+        public String LastModifiedBy { get; set; }
+        public DateTimeOffset LastModifiedAt { get; set; }
         public String Status { get; set; }
         public DateTimeOffset ValidFrom { get; set; }
         public DateTimeOffset ValidTo { get; set; }

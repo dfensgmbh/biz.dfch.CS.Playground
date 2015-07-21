@@ -22,12 +22,28 @@ namespace Database.Model
     {
         [Key]        
         public Int32 Id { get; set; }
+        // DFCHECK check if the following two properties are necessary (Maybe embedded in TOSCA?)
+        [Required]
+        public String Name { get; set; }
+        public String Description { get; set; }
+        [Required]
         public String CreatedBy { get; set; }
+        [Required]
         public DateTimeOffset CreatedAt { get; set; }
-        public String ModifiedBy { get; set; }
-        public DateTimeOffset ModifiedAt { get; set; }
+        public String LastModifiedBy { get; set; }
+        public DateTimeOffset LastModifiedAt { get; set; }
         public String Status { get; set; }
+
         public DateTimeOffset ValidFrom { get; set; }
         public DateTimeOffset ValidTo { get; set; }
+
+        // DFCHECK check, if price could be simple or if it is a price per unit or even more complex
+        public Decimal Price { get; set; }
+
+        [Required]
+        public String ToscaDefinition { get; set; }
+
+        // DFCHECK check, if nesting catalog items is needed (Maybe a list of catalogItems?)
+        public virtual CatalogItem catalogItem { get; set; }
     }
 }

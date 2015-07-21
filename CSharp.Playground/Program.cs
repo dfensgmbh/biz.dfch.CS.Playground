@@ -30,7 +30,12 @@ namespace Database
                 Console.Write("Enter a name for a new Catalog: ");
                 var name = Console.ReadLine();
 
-                var catalog = new Catalog { Name = name };
+                var catalog = new Catalog
+                {
+                    Name = name,
+                    CreatedBy = "testuser",
+                    CreatedAt = DateTimeOffset.Now
+                };
                 db.Catalogs.Add(catalog);
                 db.SaveChanges();
 
