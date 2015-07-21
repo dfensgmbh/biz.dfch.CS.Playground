@@ -1,4 +1,5 @@
 # CSharp-playground
+[![License](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg)](https://github.com/rufer7/CSharp-playground/blob/master/LICENSE)
 Playground for try outs in C#
 
 ## Database.Access.Sample
