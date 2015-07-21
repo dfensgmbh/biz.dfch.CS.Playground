@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 using CSharp.Playground.Tests.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
