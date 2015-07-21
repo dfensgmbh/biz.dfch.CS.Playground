@@ -23,6 +23,12 @@ namespace Database.Model
     {
         [Key]
         public Int32 Id { get; set; }
+        public String CreatedBy { get; set; }
+        public DateTimeOffset OrderDate { get; set; }
+        public String ModifiedBy { get; set; }
+        public DateTimeOffset ModifiedAt { get; set; }
+        public String Status { get; set; }
+
         public virtual List<OrderItem> OrderItems { get; set; }
     }
 }
