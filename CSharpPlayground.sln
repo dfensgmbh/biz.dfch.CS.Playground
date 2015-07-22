@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database.Access.Sample.Test
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database.Access.Sample", "CSharp.Playground\Database.Access.Sample.csproj", "{481825B3-7600-4340-A24B-140DE94F3F9B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StateMachine", "StateMachine\StateMachine.csproj", "{7214011F-DC53-4184-A056-916B4B6CE2AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StateMachine.Tests", "StateMachine.Tests\StateMachine.Tests.csproj", "{F6FE66C5-A4B2-4CF6-A90F-81377C1FB9ED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{481825B3-7600-4340-A24B-140DE94F3F9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{481825B3-7600-4340-A24B-140DE94F3F9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{481825B3-7600-4340-A24B-140DE94F3F9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7214011F-DC53-4184-A056-916B4B6CE2AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7214011F-DC53-4184-A056-916B4B6CE2AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7214011F-DC53-4184-A056-916B4B6CE2AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7214011F-DC53-4184-A056-916B4B6CE2AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6FE66C5-A4B2-4CF6-A90F-81377C1FB9ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6FE66C5-A4B2-4CF6-A90F-81377C1FB9ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6FE66C5-A4B2-4CF6-A90F-81377C1FB9ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6FE66C5-A4B2-4CF6-A90F-81377C1FB9ED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
