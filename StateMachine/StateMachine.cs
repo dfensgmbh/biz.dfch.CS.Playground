@@ -1,5 +1,5 @@
 ﻿/**
- * Copyright 2014-2015 Ronald Rink, d-fens GmbH
+ * Copyright 2015 Marc Rufer, d-fens GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,37 +13,40 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace LightSwitchApplication
+namespace StateMachine
 {
     public class StateMachine
     {
 
-        protected HashSet<string> ConditionSet = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
-        protected StateMachine AddCondition(string name)
+        protected HashSet<String> ConditionSet = new HashSet<String>(StringComparer.OrdinalIgnoreCase);
+
+        protected StateMachine AddCondition(String name)
         {
             lock (_transitions)
             {
                 var fReturn = ConditionSet.Contains(name, StringComparer.OrdinalIgnoreCase);
                 if (fReturn)
                 {
-                    throw new ArgumentException(string.Format("Machine condition already exists: '{0}'", name), "name");
+                    throw new ArgumentException(String.Format("Machine condition already exists: '{0}'", name), "name");
                 }
                 ConditionSet.Add(name);
             }
             return this;
         }
-        protected StateMachine AddConditions(IEnumerable<string> names, bool ignoreExisting = false)
+
+        protected StateMachine AddConditions(IEnumerable<String> names, bool ignoreExisting = false)
         {
             lock (_transitions)
             {
                 var fReturn = ConditionSet.Overlaps(names);
                 if (fReturn && !ignoreExisting)
                 {
-                    throw new ArgumentException(string.Format("Machine states already exist: '{0}'", string.Join(", ", StateSet.Intersect(names))), "names");
+                    throw new ArgumentException(String.Format("Machine states already exist: '{0}'", String.Join(", ", StateSet.Intersect(names))), "names");
                 }
                 foreach (var name in names)
                 {
@@ -53,28 +56,30 @@ namespace LightSwitchApplication
             return this;
         }
 
-        protected HashSet<string> StateSet = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
-        protected StateMachine AddState(string name)
+        protected HashSet<String> StateSet = new HashSet<String>(StringComparer.OrdinalIgnoreCase);
+
+        protected StateMachine AddState(String name)
         {
             lock (_transitions)
             {
                 var fReturn = StateSet.Contains(name);
                 if (fReturn)
                 {
-                    throw new ArgumentException(string.Format("Machine state already exists: '{0}'", name), "name");
+                    throw new ArgumentException(String.Format("Machine state already exists: '{0}'", name), "name");
                 }
                 StateSet.Add(name);
             }
             return this;
         }
-        protected StateMachine AddStates(IEnumerable<string> names, bool ignoreExisting = false)
+
+        protected StateMachine AddStates(IEnumerable<String> names, bool ignoreExisting = false)
         {
             lock (_transitions)
             {
                 var fReturn = StateSet.Overlaps(names);
                 if (fReturn && !ignoreExisting)
                 {
-                    throw new ArgumentException(string.Format("Machine states already exist: '{0}'", string.Join(", ", StateSet.Intersect(names))), "names");
+                    throw new ArgumentException(String.Format("Machine states already exist: '{0}'", String.Join(", ", StateSet.Intersect(names))), "names");
                 }
                 foreach (var name in names)
                 {
@@ -86,12 +91,11 @@ namespace LightSwitchApplication
 
         protected class StateTransition
         {
-            readonly string CurrentState;
-            readonly string Condition;
+            readonly String CurrentState;
+            readonly String Condition;
 
-            public StateTransition(string sourceState, string condition)
+            public StateTransition(String sourceState, String condition)
             {
-                //if()
                 CurrentState = sourceState;
                 Condition = condition;
             }
@@ -106,17 +110,17 @@ namespace LightSwitchApplication
                 StateTransition other = obj as StateTransition;
                 return other != null && this.CurrentState.Equals(other.CurrentState, StringComparison.OrdinalIgnoreCase) && this.Condition.Equals(other.Condition, StringComparison.OrdinalIgnoreCase);
             }
-            public override string ToString()
+            public override String ToString()
             {
-                return string.Format("{0}-{1}", CurrentState, Condition);
+                return String.Format("{0}-{1}", CurrentState, Condition);
             }
         }
 
-        Dictionary<StateTransition, string> _transitions = new Dictionary<StateTransition, string>();
-        public string CurrentState { get; protected set; }
-        public string PreviousState { get; protected set; }
+        Dictionary<StateTransition, String> _transitions = new Dictionary<StateTransition, String>();
+        public String CurrentState { get; protected set; }
+        public String PreviousState { get; protected set; }
 
-        public string InitialState
+        public String InitialState
         {
             get
             {
@@ -131,7 +135,7 @@ namespace LightSwitchApplication
                 return CurrentState.Equals(InitialState, StringComparison.OrdinalIgnoreCase);
             }
         }
-        public string RunningState
+        public String RunningState
         {
             get
             {
@@ -139,7 +143,7 @@ namespace LightSwitchApplication
             }
             protected set { }
         }
-        public string ErrorState
+        public String ErrorState
         {
             get
             {
@@ -147,7 +151,7 @@ namespace LightSwitchApplication
             }
             protected set { }
         }
-        public string CompletedState
+        public String CompletedState
         {
             get
             {
@@ -155,7 +159,7 @@ namespace LightSwitchApplication
             }
             protected set { }
         }
-        public string CancelledState
+        public String CancelledState
         {
             get
             {
@@ -163,7 +167,7 @@ namespace LightSwitchApplication
             }
             protected set { }
         }
-        public string FinalState
+        public String FinalState
         {
             get
             {
@@ -178,7 +182,7 @@ namespace LightSwitchApplication
                 return CurrentState.Equals(FinalState, StringComparison.OrdinalIgnoreCase);
             }
         }
-        public string ContinueCondition
+        public String ContinueCondition
         {
             get
             {
@@ -186,7 +190,7 @@ namespace LightSwitchApplication
             }
             protected set { }
         }
-        public string CancelCondition
+        public String CancelCondition
         {
             get
             {
@@ -197,11 +201,16 @@ namespace LightSwitchApplication
 
         public StateMachine()
         {
+            InitStateMachine();
+        }
+
+        private void InitStateMachine()
+        {
             CurrentState = InitialState;
             PreviousState = InitialState;
 
-            AddStates(new List<string> { InitialState, RunningState, CompletedState, CancelledState, ErrorState, FinalState });
-            AddConditions(new List<string> { ContinueCondition, CancelCondition });
+            AddStates(new List<String> { InitialState, RunningState, CompletedState, CancelledState, ErrorState, FinalState });
+            AddConditions(new List<String> { ContinueCondition, CancelCondition });
 
             SetStateTransition(InitialState, ContinueCondition, RunningState);
             SetStateTransition(InitialState, CancelCondition, ErrorState);
@@ -214,23 +223,23 @@ namespace LightSwitchApplication
             SetStateTransition(ErrorState, ContinueCondition, FinalState);
         }
 
-        protected StateMachine SetStateTransition(string sourceState, string condition, string targetState, bool fReplace = false)
+        protected StateMachine SetStateTransition(String sourceState, String condition, String targetState, bool fReplace = false)
         {
             lock (_transitions)
             {
                 if (!StateSet.Contains(sourceState))
                 {
-                    throw new KeyNotFoundException(string.Format("sourceState not found: '{0}'", sourceState));
+                    throw new KeyNotFoundException(String.Format("sourceState not found: '{0}'", sourceState));
                 }
                 if (!StateSet.Contains(targetState))
                 {
-                    throw new KeyNotFoundException(string.Format("targetState not found: '{0}'", targetState));
+                    throw new KeyNotFoundException(String.Format("targetState not found: '{0}'", targetState));
                 }
                 if (!ConditionSet.Contains(condition))
                 {
-                    throw new KeyNotFoundException(string.Format("condition not found: '{0}'", condition));
+                    throw new KeyNotFoundException(String.Format("condition not found: '{0}'", condition));
                 }
-                string _processState;
+                String _processState;
                 var stateTransition = new StateTransition(sourceState, condition);
                 var fReturn = _transitions.TryGetValue(stateTransition, out _processState);
                 if (fReturn)
@@ -241,7 +250,7 @@ namespace LightSwitchApplication
                     }
                     else
                     {
-                        throw new ArgumentException(string.Format("stateTransission already exists: '{0}' -- > '{1}'", sourceState, condition), "stateTransission");
+                        throw new ArgumentException(String.Format("stateTransition already exists: '{0}' -- > '{1}'", sourceState, condition));
                     }
                 }
                 _transitions.Add(stateTransition, targetState);
@@ -249,32 +258,32 @@ namespace LightSwitchApplication
             return this;
         }
 
-        protected StateMachine InsertStateTransition(string sourceState, string condition, string targetStateNew, bool fCreateTargetState = false)
+        protected StateMachine InsertStateTransition(String sourceState, String condition, String targetStateNew, bool fCreateTargetState = false)
         {
             lock (_transitions)
             {
                 if (!StateSet.Contains(sourceState))
                 {
-                    throw new KeyNotFoundException(string.Format("sourceState not found: '{0}'", sourceState));
+                    throw new KeyNotFoundException(String.Format("sourceState not found: '{0}'", sourceState));
                 }
                 if (!StateSet.Contains(targetStateNew))
                 {
                     if (!fCreateTargetState)
                     {
-                        throw new KeyNotFoundException(string.Format("targetStateNew not found: '{0}'", targetStateNew));
+                        throw new KeyNotFoundException(String.Format("targetStateNew not found: '{0}'", targetStateNew));
                     }
                     AddState(targetStateNew);
                 }
                 if (!ConditionSet.Contains(condition))
                 {
-                    throw new KeyNotFoundException(string.Format("condition not found: '{0}'", condition));
+                    throw new KeyNotFoundException(String.Format("condition not found: '{0}'", condition));
                 }
-                string _processState;
+                String _processState;
                 var stateTransition = new StateTransition(sourceState, condition);
                 var fReturn = _transitions.TryGetValue(stateTransition, out _processState);
                 if (!fReturn)
                 {
-                    throw new ArgumentException(string.Format("stateTransission not found: '{0}' -- > '{1}'", sourceState, condition), "stateTransission");
+                    throw new ArgumentException(String.Format("stateTransition not found: '{0}' -- > '{1}'", sourceState, condition));
                 }
                 _transitions.Remove(stateTransition);
                 _transitions.Add(stateTransition, targetStateNew);
@@ -284,7 +293,8 @@ namespace LightSwitchApplication
             return this;
         }
 
-        public virtual string GetStateMachine()
+        // DFTODO check, if replacing JavaScriptSearializer with Netwonsoft Json lib makes sense
+        public virtual String GetStateMachine()
         {
             var jss = new System.Web.Script.Serialization.JavaScriptSerializer();
             lock (_transitions)
@@ -294,17 +304,19 @@ namespace LightSwitchApplication
                 return stateMachineSerialised;
             }
         }
-        public virtual bool SetStateMachine(string configuration, string currentState = null, string previousState = null)
+
+        // DFTODO create constructor (public, which calls the private no arg constructor and takes the arguments provided here)
+        public virtual bool SetStateMachine(String configuration, String currentState = null, String previousState = null)
         {
             var fReturn = false;
             var jss = new System.Web.Script.Serialization.JavaScriptSerializer();
             lock (_transitions)
             {
-                Dictionary<string, string> dic = jss.Deserialize<Dictionary<string, string>>(configuration);
+                Dictionary<String, String> dic = jss.Deserialize<Dictionary<String, String>>(configuration);
                 _transitions.Clear();
                 StateSet.Clear();
                 ConditionSet.Clear();
-                foreach (KeyValuePair<string, string> item in dic)
+                foreach (KeyValuePair<String, String> item in dic)
                 {
                     var sourceStateCondition = item.Key.Split('-');
                     var sourceState = sourceStateCondition.First();
@@ -319,7 +331,7 @@ namespace LightSwitchApplication
                 {
                     if (!StateSet.Contains(currentState))
                     {
-                        throw new ArgumentOutOfRangeException("currentState", string.Format("currentState: Parameter validation failed. '{0}' is not a valid state.", currentState));
+                        throw new ArgumentOutOfRangeException("currentState", String.Format("currentState: Parameter validation failed. '{0}' is not a valid state.", currentState));
                     }
                     CurrentState = currentState;
                 }
@@ -327,7 +339,7 @@ namespace LightSwitchApplication
                 {
                     if (!StateSet.Contains(previousState))
                     {
-                        throw new ArgumentOutOfRangeException("previousState", string.Format("previousState: Parameter validation failed. '{0}' is not a valid state.", previousState));
+                        throw new ArgumentOutOfRangeException("previousState", String.Format("previousState: Parameter validation failed. '{0}' is not a valid state.", previousState));
                     }
                     PreviousState = previousState;
                 }
@@ -335,7 +347,8 @@ namespace LightSwitchApplication
             }
             return fReturn;
         }
-        protected virtual void ClearStateMachine()
+
+        protected virtual void Clear()
         {
             lock (_transitions)
             {
@@ -345,42 +358,34 @@ namespace LightSwitchApplication
             }
         }
 
-        public string GetNext(string condition)
+        public String GetNext(String condition)
         {
             StateTransition transition = new StateTransition(CurrentState, condition);
-            string _nextState;
+            String _nextState;
             lock (_transitions)
             {
                 if (!_transitions.TryGetValue(transition, out _nextState))
                 {
-                    throw new ArgumentOutOfRangeException(string.Format("stateTransission is invalid: '{0}' @ '{1}'", CurrentState, condition));
+                    throw new ArgumentOutOfRangeException(String.Format("stateTransition is invalid: '{0}' @ '{1}'", CurrentState, condition));
                 }
             }
             return _nextState;
         }
 
-        public string MoveNext()
-        {
-            return Continue();
-        }
-        public string Continue()
-        {
-            return MoveNext(ContinueCondition);
-        }
-        public string Cancel()
-        {
-            return MoveNext(CancelCondition);
-        }
-        public string MoveNext(string condition)
+        public String MoveNext() { return Continue(); }
+        public String Continue() { return MoveNext(ContinueCondition); }
+        public String Cancel() { return MoveNext(CancelCondition); }
+
+        public String MoveNext(String condition)
         {
             lock (_transitions)
             {
-                string _nextState = GetNext(condition);
+                // DFTCHECK Rename GetNext method to a more meaningful name
+                String _nextState = GetNext(condition);
                 PreviousState = CurrentState;
                 CurrentState = _nextState;
             }
             return CurrentState;
         }
-
     }
 }
