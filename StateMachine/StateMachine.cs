@@ -314,6 +314,7 @@ namespace StateMachine
             return this;
         }
 
+        // DFTODO Rename to GetNextState
         public String GetNext(String condition)
         {
             StateTransition transition = new StateTransition(CurrentState, condition);
@@ -329,10 +330,12 @@ namespace StateMachine
             return _nextState;
         }
 
+        // DFTODO rename to Next()
         public String MoveNext() { return Continue(); }
         public String Continue() { return MoveNext(ContinueCondition); }
         public String Cancel() { return MoveNext(CancelCondition); }
 
+        // DFTODO Rename method to ChangeState?
         public String MoveNext(String condition)
         {
             // DFTODO Check lock (is it necessary and correct)?
@@ -358,7 +361,7 @@ namespace StateMachine
         }
 
         // DFTCHECK Check if replacing JavaScriptSearializer with Netwonsoft Json lib makes sense
-        // DFTODO rename method (ToString?)
+        // DFTODO rename method (ToString/GetStringRepresentation?)
         public virtual String GetStateMachine()
         {
             var jss = new System.Web.Script.Serialization.JavaScriptSerializer();
@@ -391,6 +394,7 @@ namespace StateMachine
                 StateTransition other = obj as StateTransition;
                 return other != null && this.CurrentState.Equals(other.CurrentState, StringComparison.OrdinalIgnoreCase) && this.Condition.Equals(other.Condition, StringComparison.OrdinalIgnoreCase);
             }
+
             public override String ToString()
             {
                 return String.Format("{0}-{1}", CurrentState, Condition);
