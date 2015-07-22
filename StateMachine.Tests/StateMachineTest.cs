@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Copyright 2015 Marc Rufer, d-fens GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,16 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-﻿using System.Data.Entity;
-using Database.Model;
 
-namespace Database.Context
+using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+namespace StateMachine.Tests
 {
-    public class OrderingContext : DbContext
+    [TestClass]
+    public class StateMachineTest
     {
-        public DbSet<Order> Orders { get; set; }
-        public DbSet<OrderItem> OrdersItems { get; set; }
-        public DbSet<Catalog> Catalogs { get; set; }
-        public DbSet<CatalogItem> CatalogItems { get; set; }
+        [TestMethod]
+        public void TestMethod1()
+        {
+        }
     }
 }

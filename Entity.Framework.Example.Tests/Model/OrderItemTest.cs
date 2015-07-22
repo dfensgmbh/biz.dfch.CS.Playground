@@ -13,10 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-using CSharp.Playground.Tests.Model;
+
+using biz.dfch.CS.Playground.Entity.Framework.Example.Model;
+using biz.dfch.CS.Playground.Entity.Framework.Example.Tests.Factory;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Database.Model
+namespace biz.dfch.CS.Playground.Entity.Framework.Example.Tests.Model
 {
     [TestClass]
     public class OrderItemTest

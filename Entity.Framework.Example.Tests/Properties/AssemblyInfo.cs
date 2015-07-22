@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("CSharp.Playground.Tests")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Entity.Framework.Example.Tests")]
+[assembly: AssemblyDescription("Tests for Entity Framework example")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("CSharp.Playground.Tests")]
-[assembly: AssemblyCopyright("Copyright ©  2015")]
+[assembly: AssemblyCompany("d-fens GmbH")]
+[assembly: AssemblyProduct("Entity.Framework.Example.Tests")]
+[assembly: AssemblyCopyright("Copyright © 2015 d-fens GmbH")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("5198de57-dffc-4ee1-a059-7333a4b539f5")]
+[assembly: Guid("55ca4ef8-34e7-4590-99d8-97c4a010bc42")]
 
 // Version information for an assembly consists of the following four values:
 //

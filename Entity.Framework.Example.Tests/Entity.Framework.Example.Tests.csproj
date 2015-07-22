@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{292889A9-3D20-458E-8A85-6B82A6EA6ECF}</ProjectGuid>
+    <ProjectGuid>{88362F81-A5A0-45C2-A39C-EFDBB48527AA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CSharp.Playground.Tests</RootNamespace>
-    <AssemblyName>CSharp.Playground.Tests</AssemblyName>
+    <RootNamespace>Entity.Framework.Example.Tests</RootNamespace>
+    <AssemblyName>Entity.Framework.Example.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -52,13 +52,13 @@
   <ItemGroup>
     <Compile Include="Model\OrderItemTest.cs" />
     <Compile Include="Model\OrderTest.cs" />
-    <Compile Include="Model\TestFactory.cs" />
+    <Compile Include="Factory\TestFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CSharp.Playground\Database.Access.Sample.csproj">
-      <Project>{481825b3-7600-4340-a24b-140de94f3f9b}</Project>
-      <Name>Database.Access.Sample</Name>
+    <ProjectReference Include="..\Entity.Framework.Example\Entity.Framework.Example.csproj">
+      <Project>{cabc2dc8-0922-4155-ab8b-af3e38a8a25e}</Project>
+      <Name>Entity.Framework.Example</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

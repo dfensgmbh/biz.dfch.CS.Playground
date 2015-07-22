@@ -13,21 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 ﻿using System;
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Database.Model
+namespace biz.dfch.CS.Playground.Entity.Framework.Example.Model
 {
-    public class CatalogItem
+    public class OrderItem
     {
-        [Key]        
+        [Key]
         public Int32 Id { get; set; }
-        // DFCHECK check if the following two properties are necessary (Maybe embedded in TOSCA?)
-        [Required]
-        public String Name { get; set; }
-        public String Description { get; set; }
-        [Required]
-        public String Version { get; set; }
+        // DFCHECK CreatedBy and CreatedAt for OrderItem needed?
         [Required]
         public String CreatedBy { get; set; }
         [Required]
@@ -36,18 +32,14 @@ namespace Database.Model
         public DateTimeOffset LastModifiedAt { get; set; }
         public String Status { get; set; }
 
-        public DateTimeOffset ValidFrom { get; set; }
-        public DateTimeOffset ValidTo { get; set; }
-
-        // DFCHECK check, if price could be simple or if it is a price per unit or even more complex
-        public Decimal Price { get; set; }
-        public Boolean Taxable { get; set; }
-        public Decimal TaxRate { get; set; }
-
         [Required]
-        public String ToscaDefinition { get; set; }
+        public Int32 Quantity { get; set; }
 
-        // DFCHECK check, if nesting catalog items is needed (Maybe a list of catalogItems?)
-        public virtual CatalogItem catalogItem { get; set; }
+        public virtual CatalogItem CatalogItem { get; set; }
+
+        public Decimal GetPrice()
+        {
+            return CatalogItem.Price * Quantity;
+        }
     }
 }

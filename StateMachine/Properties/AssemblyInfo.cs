@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("CSharpPlayground")]
-[assembly: AssemblyDescription("Playground for try outs in C#")]
+[assembly: AssemblyTitle("StateMachine")]
+[assembly: AssemblyDescription("State Machine")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("d-fens GmbH")]
-[assembly: AssemblyProduct("CSharpPlayground")]
-[assembly: AssemblyCopyright("Copyright ©  2015 Marc Rufer, d-fens GmbH")]
+[assembly: AssemblyProduct("StateMachine")]
+[assembly: AssemblyCopyright("Copyright © 2015 d-fens GmbH")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("aac3e1eb-5f36-4c4a-b0b5-68790bcba80b")]
+[assembly: Guid("02423158-3e44-48d6-82ca-dabd2df83b90")]
 
 // Version information for an assembly consists of the following four values:
 //

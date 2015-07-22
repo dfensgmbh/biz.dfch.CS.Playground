@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Copyright 2015 Marc Rufer, d-fens GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,12 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 ﻿using System;
 using System.Linq;
-﻿using Database.Context;
-﻿using Database.Model;
+﻿using biz.dfch.CS.Playground.Entity.Framework.Example.Context;
+﻿using biz.dfch.CS.Playground.Entity.Framework.Example.Model;
 
-namespace Database
+namespace biz.dfch.CS.Playground.Entity.Framework.Example
 {
     class Program
     {
@@ -53,6 +54,6 @@ namespace Database
                 Console.WriteLine("Press any key to exit...");
                 Console.ReadKey();
             }
-        } 
+        }
     }
 }

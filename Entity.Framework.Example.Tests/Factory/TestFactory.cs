@@ -13,10 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-﻿using System;
-﻿using Database.Model;
 
-namespace CSharp.Playground.Tests.Model
+﻿using System;
+﻿using biz.dfch.CS.Playground.Entity.Framework.Example.Model;
+
+namespace biz.dfch.CS.Playground.Entity.Framework.Example.Tests.Factory
 {
     public class TestFactory
     {
