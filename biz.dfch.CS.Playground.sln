@@ -3,10 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StateMachine", "StateMachine\StateMachine.csproj", "{7214011F-DC53-4184-A056-916B4B6CE2AB}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StateMachine.Tests", "StateMachine.Tests\StateMachine.Tests.csproj", "{F6FE66C5-A4B2-4CF6-A90F-81377C1FB9ED}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entity.Framework.Example.Tests", "Entity.Framework.Example.Tests\Entity.Framework.Example.Tests.csproj", "{88362F81-A5A0-45C2-A39C-EFDBB48527AA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entity.Framework.Example", "Entity.Framework.Example\Entity.Framework.Example.csproj", "{CABC2DC8-0922-4155-AB8B-AF3E38A8A25E}"
@@ -17,14 +13,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7214011F-DC53-4184-A056-916B4B6CE2AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7214011F-DC53-4184-A056-916B4B6CE2AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7214011F-DC53-4184-A056-916B4B6CE2AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7214011F-DC53-4184-A056-916B4B6CE2AB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F6FE66C5-A4B2-4CF6-A90F-81377C1FB9ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F6FE66C5-A4B2-4CF6-A90F-81377C1FB9ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F6FE66C5-A4B2-4CF6-A90F-81377C1FB9ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F6FE66C5-A4B2-4CF6-A90F-81377C1FB9ED}.Release|Any CPU.Build.0 = Release|Any CPU
 		{88362F81-A5A0-45C2-A39C-EFDBB48527AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{88362F81-A5A0-45C2-A39C-EFDBB48527AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88362F81-A5A0-45C2-A39C-EFDBB48527AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
