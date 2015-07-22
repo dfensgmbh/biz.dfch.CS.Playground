@@ -25,6 +25,7 @@ namespace StateMachine
         protected HashSet<String> Conditions = new HashSet<String>(StringComparer.OrdinalIgnoreCase);
         protected HashSet<String> States = new HashSet<String>(StringComparer.OrdinalIgnoreCase);
         protected Dictionary<StateTransition, String> Transitions = new Dictionary<StateTransition, String>();
+        protected Object Lock;
 
         public String CurrentState { get; protected set; }
         public String PreviousState { get; protected set; }
@@ -135,8 +136,7 @@ namespace StateMachine
         {
             var fReturn = false;
             var jss = new System.Web.Script.Serialization.JavaScriptSerializer();
-            // DFTODO other locks needed?
-            lock (Transitions)
+            lock (Lock)
             {
                 Dictionary<String, String> dic = jss.Deserialize<Dictionary<String, String>>(configuration);
                 Transitions.Clear();
@@ -176,8 +176,7 @@ namespace StateMachine
 
         protected StateMachine AddCondition(String name)
         {
-            // DFTODO Check lock (is it necessary and correct)?
-            lock (Transitions)
+            lock (Lock)
             {
                 var fReturn = Conditions.Contains(name, StringComparer.OrdinalIgnoreCase);
                 if (fReturn)
@@ -191,8 +190,7 @@ namespace StateMachine
 
         protected StateMachine AddConditions(IEnumerable<String> names, bool ignoreExisting = false)
         {
-            // DFTODO Check lock (is it necessary and correct)?
-            lock (Transitions)
+            lock (Lock)
             {
                 var fReturn = Conditions.Overlaps(names);
                 if (fReturn && !ignoreExisting)
@@ -209,8 +207,7 @@ namespace StateMachine
 
         protected StateMachine AddState(String name)
         {
-            // DFTODO Check lock (is it necessary and correct)?
-            lock (Transitions)
+            lock (Lock)
             {
                 var fReturn = States.Contains(name);
                 if (fReturn)
@@ -224,8 +221,7 @@ namespace StateMachine
 
         protected StateMachine AddStates(IEnumerable<String> names, bool ignoreExisting = false)
         {
-            // DFTODO Check lock (is it necessary and correct)?
-            lock (Transitions)
+            lock (Lock)
             {
                 var fReturn = States.Overlaps(names);
                 if (fReturn && !ignoreExisting)
@@ -243,8 +239,7 @@ namespace StateMachine
         // DFTODO refactor -> make it more clear
         protected StateMachine SetStateTransition(String sourceState, String condition, String targetState, bool fReplace = false)
         {
-            // DFTODO Check lock (is it necessary and correct)?
-            lock (Transitions)
+            lock (Lock)
             {
                 if (!States.Contains(sourceState))
                 {
@@ -280,8 +275,7 @@ namespace StateMachine
         // DFTODO refactor -> make it more clear
         protected StateMachine InsertStateTransition(String sourceState, String condition, String targetStateNew, bool fCreateTargetState = false)
         {
-            // DFTODO Check lock (is it necessary and correct)?
-            lock (Transitions)
+            lock (Lock)
             {
                 if (!States.Contains(sourceState))
                 {
@@ -319,8 +313,7 @@ namespace StateMachine
         {
             StateTransition transition = new StateTransition(CurrentState, condition);
             String _nextState;
-            // DFTODO Check lock (is it necessary and correct)?
-            lock (Transitions)
+            lock (Lock)
             {
                 if (!Transitions.TryGetValue(transition, out _nextState))
                 {
@@ -338,8 +331,7 @@ namespace StateMachine
         // DFTODO Rename method to ChangeState?
         public String MoveNext(String condition)
         {
-            // DFTODO Check lock (is it necessary and correct)?
-            lock (Transitions)
+            lock (Lock)
             {
                 // DFTCHECK Rename GetNext method to a more meaningful name
                 String _nextState = GetNext(condition);
@@ -351,8 +343,7 @@ namespace StateMachine
 
         protected virtual void Clear()
         {
-            // DFTODO Check lock (is it necessary and correct)?
-            lock (Transitions)
+            lock (Lock)
             {
                 Transitions.Clear();
                 States.Clear();
@@ -365,7 +356,7 @@ namespace StateMachine
         public virtual String GetStateMachine()
         {
             var jss = new System.Web.Script.Serialization.JavaScriptSerializer();
-            lock (Transitions)
+            lock (Lock)
             {
                 var dic = Transitions.ToDictionary(k => k.Key.ToString(), v => v.Value);
                 var stateMachineSerialised = jss.Serialize(dic);
