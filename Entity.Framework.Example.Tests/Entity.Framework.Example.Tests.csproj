@@ -54,6 +54,7 @@
     <Compile Include="Model\OrderTest.cs" />
     <Compile Include="Factory\TestFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ListOfDictionaryTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Entity.Framework.Example\Entity.Framework.Example.csproj">
