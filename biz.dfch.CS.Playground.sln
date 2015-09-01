@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entity.Framework.Example.Te
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entity.Framework.Example", "Entity.Framework.Example\Entity.Framework.Example.csproj", "{CABC2DC8-0922-4155-AB8B-AF3E38A8A25E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xml.Parser", "Xml.Parser\Xml.Parser.csproj", "{0C4543D8-3565-4942-AD43-0DCDE9ED61FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xml.Parser.Tests", "Xml.Parser.Tests\Xml.Parser.Tests.csproj", "{291A483B-36F6-41DC-A4F2-639B6384F056}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{CABC2DC8-0922-4155-AB8B-AF3E38A8A25E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CABC2DC8-0922-4155-AB8B-AF3E38A8A25E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CABC2DC8-0922-4155-AB8B-AF3E38A8A25E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C4543D8-3565-4942-AD43-0DCDE9ED61FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C4543D8-3565-4942-AD43-0DCDE9ED61FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C4543D8-3565-4942-AD43-0DCDE9ED61FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C4543D8-3565-4942-AD43-0DCDE9ED61FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{291A483B-36F6-41DC-A4F2-639B6384F056}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{291A483B-36F6-41DC-A4F2-639B6384F056}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{291A483B-36F6-41DC-A4F2-639B6384F056}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{291A483B-36F6-41DC-A4F2-639B6384F056}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
