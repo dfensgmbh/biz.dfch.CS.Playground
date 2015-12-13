@@ -37,6 +37,9 @@ namespace biz.dfch.CS.Playground.Entity.Framework.Example.Model
         public Int32 OrderNumber { get; set; }
         [Required]
         public String UserId { get; set; }
+        [Required]
+        public String TenantId { get; set; }
+
         public Address BillingAddress { get; set; }
         [MaxLength(3)]
         public String Currency { get; set; }
