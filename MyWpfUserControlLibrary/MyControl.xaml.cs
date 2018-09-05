@@ -17,6 +17,7 @@
 using System;
 using System.Windows;
 using System.Windows.Controls;
+using EA;
 
 namespace MyWpfUserControlLibrary
 {
@@ -32,7 +33,15 @@ namespace MyWpfUserControlLibrary
 
         private void MyButton_Click(object sender, RoutedEventArgs e)
         {
-            MyTextBox.Text = Guid.NewGuid().ToString();
+            var pathToEaRepo = "C:\\src\\biz.dfch.PS.EnterpriseArchitect.Scripts\\src\\SampleModel.eapx";
+            var eaRepo = new Repository();
+
+            eaRepo.OpenFile(pathToEaRepo);
+
+            MyTextBox.Text = eaRepo.ConnectionString;
+
+            eaRepo.CloseFile();
+            eaRepo.Exit();
         }
     }
 }
