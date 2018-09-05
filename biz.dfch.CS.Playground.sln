@@ -11,9 +11,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xml.Parser", "Xml.Parser\Xm
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xml.Parser.Tests", "Xml.Parser.Tests\Xml.Parser.Tests.csproj", "{291A483B-36F6-41DC-A4F2-639B6384F056}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyConsoleApp", "..\WpfUiAsDLLStartedFromEXE\MyConsoleApp\MyConsoleApp.csproj", "{C51D8740-FB6C-4444-A7E9-728D23DFA5D9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyConsoleApp", "MyConsoleApp\MyConsoleApp.csproj", "{C51D8740-FB6C-4444-A7E9-728D23DFA5D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyWpfUserControlLibrary", "..\WpfUiAsDLLStartedFromEXE\MyWpfUserControlLibrary\MyWpfUserControlLibrary.csproj", "{F0D16A8A-F30E-4B61-93FD-82DAEA2A1BBB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyWpfUserControlLibrary", "MyWpfUserControlLibrary\MyWpfUserControlLibrary.csproj", "{F0D16A8A-F30E-4B61-93FD-82DAEA2A1BBB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
