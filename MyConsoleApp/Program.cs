@@ -14,24 +14,40 @@
  * limitations under the License.
  */
 
-
 using System;
+using System.Threading;
 using MyWpfUserControlLibrary;
 
 namespace MyConsoleApp
 {
     class Program
     {
-        [STAThread]
+        //[STAThread]
         static void Main(string[] args)
         {
-            RunApplication();
-        }
+            Console.WriteLine("Creating thread that creates and shows WPF window ...");
 
+            var worker = new Worker();
+
+            var myThread = new Thread(worker.CreateAndShowMyWindow);
+            myThread.SetApartmentState(ApartmentState.STA);
+
+            Console.WriteLine("Starting thread that creates and shows WPF window ...");
+            myThread.Start();
+
+            Console.WriteLine("Join thread that shows WPF window ...");
+            myThread.Join();
+
+            Console.WriteLine("Exit Main method");
+        }
+    }
+
+    public class Worker
+    {
         /**
-         * Starting a WPF Window, which is in a WPF user control library, from another non WPF executable
+         * Creating and showing a WPF Window, which is defined in a WPF user control library, from another non WPF executable
          */
-        private static void RunApplication()
+        public void CreateAndShowMyWindow()
         {
             //CustomApplication app = new CustomApplication();
             //app.Run();
