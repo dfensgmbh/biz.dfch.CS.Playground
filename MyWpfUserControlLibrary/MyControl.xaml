@@ -12,6 +12,6 @@
             <RowDefinition Height="0.333*"/>
         </Grid.RowDefinitions>
         <TextBox x:Name="MyTextBox" Grid.Column="0" Grid.Row="0"></TextBox>
-        <Button x:Name="MyButton" Grid.Column="0" Grid.Row="1" Click="MyButton_Click">Test</Button>
+        <Button x:Name="MyButton" Grid.Column="0" Grid.Row="1" Click="MyButton_Click">Open Enterprise Architect Project</Button>
     </Grid>
 </UserControl>
