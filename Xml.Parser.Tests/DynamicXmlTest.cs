@@ -39,7 +39,7 @@ namespace Xml.Parser.Tests
                     <Mark>90</Mark>
                 </Student>
                 <Student>
-                    <Name>Lilly</Name>
+                    <Name>Lily</Name>
                     <Mark>80</Mark>
                 </Student>
             </Students>";
